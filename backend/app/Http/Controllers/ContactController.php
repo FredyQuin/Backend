@@ -12,7 +12,6 @@ class ContactController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'contact_id' => 'nullable|integer',
             'people_id' => 'required|integer|exists:people,people_id',
             'telefono_principal' => 'required|string|max:15',
             'telefono_secundario' => 'nullable|string|max:15',
@@ -25,7 +24,6 @@ class ContactController extends Controller
 
         // Crear contacto con datos
         $contact = new Contact();
-        $contact->contact_id = $validated['contact_id'] ?? null;
         $contact->people_id = $validated['people_id'];
         $contact->telefono_principal = $validated['telefono_principal'];
         $contact->telefono_secundario = $validated['telefono_secundario'] ?? null;

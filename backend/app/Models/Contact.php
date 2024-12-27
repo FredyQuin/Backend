@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Contact
  * 
- * @property int $contact_id
  * @property int|null $people_id
  * @property string $telefono_principal
  * @property string $telefono_secundario
@@ -28,12 +27,10 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
 	protected $table = 'contact';
-	protected $primaryKey = 'contact_id';
 	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'contact_id' => 'int',
 		'people_id' => 'int'
 	];
 

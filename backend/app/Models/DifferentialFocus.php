@@ -9,9 +9,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class DifferentialFocusId
+ * Class DifferentialFocu
  * 
- * @property int $differential_focus_id
  * @property int $people_id
  * @property string $focus_name
  * @property string $grupo_etnico
@@ -32,8 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DifferentialFocus extends Model
 {
-	protected $table = 'differential_focus_id';
-	protected $primaryKey = 'differential_focus_id';
+	protected $table = 'differential_focus';
+	protected $primaryKey = 'people_id';
+	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -62,7 +62,7 @@ class DifferentialFocus extends Model
 		'madre_gestante_lactante',
 		'sisben'
 	];
-	
+
 	public function person()
 	{
 		return $this->belongsTo(Person::class, 'people_id');

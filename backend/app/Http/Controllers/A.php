@@ -58,7 +58,7 @@ http://127.0.0.1:8000/api/formation-occupations
 }
 
 
-http://127.0.0.1:8000/api/emergency-contacts
+http://127.0.0.1:8000/api/emergency
 
 {
   "people_id": 1234567,

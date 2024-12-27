@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Contractor
  * 
- * @property int $contractor_id
  * @property int|null $people_id
  * @property string|null $entity
  * @property string|null $contract_type
@@ -25,12 +24,10 @@ use Illuminate\Database\Eloquent\Model;
 class Contractor extends Model
 {
 	protected $table = 'contractor';
-	protected $primaryKey = 'contractor_id';
 	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'contractor_id' => 'int',
 		'people_id' => 'int'
 	];
 

@@ -26,9 +26,11 @@ class EducationalLevel extends Model
 {
 	protected $table = 'educational_levels';
 	protected $primaryKey = 'educational_levels_id';
+	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
+		'educational_levels_id' => 'int',
 		'people_id' => 'int',
 		'level_id' => 'int'
 	];

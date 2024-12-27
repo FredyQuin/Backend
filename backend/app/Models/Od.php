@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Od
  * 
- * @property int $ods_id
  * @property int $meta_id
  * @property string $ods_description
  * 
@@ -22,7 +21,8 @@ use Illuminate\Database\Eloquent\Model;
 class Od extends Model
 {
 	protected $table = 'ods';
-	protected $primaryKey = 'ods_id';
+	protected $primaryKey = 'meta_id';
+	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -30,7 +30,6 @@ class Od extends Model
 	];
 
 	protected $fillable = [
-		'meta_id',
 		'ods_description'
 	];
 

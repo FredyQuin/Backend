@@ -26,11 +26,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $nacionalidad
  * 
  * @property Activity $activity
- * @property Collection|Contact[] $contacts
- * @property Collection|Contractor[] $contractors
- * @property DifferentialFocusId $differential_focus_id
+ * @property Contact $contact
+ * @property Contractor $contractor
+ * @property DifferentialFocu $differential_focu
  * @property EducationalLevel $educational_level
- * @property Collection|Emergency[] $emergencies
+ * @property Emergency $emergency
  * @property Collection|EmployeePrivateSector[] $employee_private_sectors
  * @property Collection|Entrepreneur[] $entrepreneurs
  * @property FormationOccupation $formation_occupation
@@ -55,7 +55,6 @@ class Person extends Model
 	];
 
 	protected $fillable = [
-		'people_id',
 		'tipo_documento',
 		'nombres_completos',
 		'correo',
@@ -73,19 +72,19 @@ class Person extends Model
 		return $this->hasOne(Activity::class, 'people_id');
 	}
 
-	public function contacts()
+	public function contact()
 	{
-		return $this->hasMany(Contact::class, 'people_id');
+		return $this->hasOne(Contact::class, 'people_id');
 	}
 
-	public function contractors()
+	public function contractor()
 	{
-		return $this->hasMany(Contractor::class, 'people_id');
+		return $this->hasOne(Contractor::class, 'people_id');
 	}
 
-	public function differential_focus_id()
+	public function differential_focu()
 	{
-		return $this->hasOne(DifferentialFocusId::class, 'people_id');
+		return $this->hasOne(DifferentialFocu::class, 'people_id');
 	}
 
 	public function educational_level()
@@ -93,9 +92,9 @@ class Person extends Model
 		return $this->hasOne(EducationalLevel::class, 'people_id');
 	}
 
-	public function emergencies()
+	public function emergency()
 	{
-		return $this->hasMany(Emergency::class, 'people_id');
+		return $this->hasOne(Emergency::class, 'people_id');
 	}
 
 	public function employee_private_sectors()
