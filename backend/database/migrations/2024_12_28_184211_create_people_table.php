@@ -18,7 +18,6 @@ return new class extends Migration
             $table->enum('tipo_documento', ['registro civil', 'tarjeta de identidad', 'cedula de ciudadania', 'cedula de extranjeria', 'pasaporte', 'permiso de permanencia temporal']);
             $table->string('nombres_completos')->index('idx_full_name');
             $table->string('correo');
-            $table->enum('genero', ['Masculino', 'Femenino', 'Otro', 'Prefiero no decirlo'])->index('idx_gender');
             $table->string('qr_code_path')->nullable();
             $table->string('lugar_expedicion')->nullable();
             $table->string('primer_apellido');

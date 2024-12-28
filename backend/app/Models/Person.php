@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $tipo_documento
  * @property string $nombres_completos
  * @property string $correo
- * @property string $genero
  * @property string|null $qr_code_path
  * @property string|null $lugar_expedicion
  * @property string $primer_apellido
@@ -26,18 +25,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $nacionalidad
  * 
  * @property Activity $activity
+ * @property AgeGroup $age_group
  * @property Contact $contact
  * @property Contractor $contractor
  * @property DifferentialFocu $differential_focu
  * @property EducationalLevel $educational_level
  * @property Emergency $emergency
- * @property Collection|EmployeePrivateSector[] $employee_private_sectors
+ * @property EmployeePrivateSector $employee_private_sector
  * @property Collection|Entrepreneur[] $entrepreneurs
  * @property FormationOccupation $formation_occupation
  * @property MaritalStatus $marital_status
  * @property Collection|PeopleFocu[] $people_focus
- * @property Collection|Population[] $populations
- * @property Collection|PublicSectorEmployee[] $public_sector_employees
+ * @property Population $population
+ * @property PublicSectorEmployee $public_sector_employee
+ * @property Sex $sex
  * @property Collection|Training[] $trainings
  *
  * @package App\Models
@@ -55,10 +56,10 @@ class Person extends Model
 	];
 
 	protected $fillable = [
+		'people_id',
 		'tipo_documento',
 		'nombres_completos',
 		'correo',
-		'genero',
 		'qr_code_path',
 		'lugar_expedicion',
 		'primer_apellido',
@@ -70,6 +71,11 @@ class Person extends Model
 	public function activity()
 	{
 		return $this->hasOne(Activity::class, 'people_id');
+	}
+
+	public function age_group()
+	{
+		return $this->hasOne(AgeGroup::class, 'people_id');
 	}
 
 	public function contact()
@@ -97,9 +103,9 @@ class Person extends Model
 		return $this->hasOne(Emergency::class, 'people_id');
 	}
 
-	public function employee_private_sectors()
+	public function employee_private_sector()
 	{
-		return $this->hasMany(EmployeePrivateSector::class, 'people_id');
+		return $this->hasOne(EmployeePrivateSector::class, 'people_id');
 	}
 
 	public function entrepreneurs()
@@ -122,14 +128,19 @@ class Person extends Model
 		return $this->hasMany(PeopleFocu::class, 'people_id');
 	}
 
-	public function populations()
+	public function population()
 	{
-		return $this->hasMany(Population::class, 'people_id');
+		return $this->hasOne(Population::class, 'people_id');
 	}
 
-	public function public_sector_employees()
+	public function public_sector_employee()
 	{
-		return $this->hasMany(PublicSectorEmployee::class, 'people_id');
+		return $this->hasOne(PublicSectorEmployee::class, 'people_id');
+	}
+
+	public function sex()
+	{
+		return $this->hasOne(Sex::class, 'people_id');
 	}
 
 	public function trainings()
